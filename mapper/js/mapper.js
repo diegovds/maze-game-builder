@@ -327,41 +327,41 @@ function getDataURL(imageObject) {
 }
 
 function clickSave() {
-  /*
-  var zip = new JSZip();
+  var zip = new JSZip()
 
-	var leveldata = JSON.stringify( levels );
-	var bgData = bgCanvas.toDataURL( "image/png" );
+  var leveldata = JSON.stringify(levels)
+  var bgData = bgCanvas.toDataURL('image/png')
 
-  var mazeHTML = '<!DOCTYPE html>\n' +
+  var mazeHTML =
+    '<!DOCTYPE html>\n' +
     '<html>\n' +
     '<head>\n' +
-      '\t<meta charset="utf-8">\n' +
-      '\t<meta name="google" value="notranslate">\n' +
-      '\t<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, user-scalable=no">\n' +
-      '\t<title>Blockly Games : Maze</title>\n' +
-      '\t<link rel="stylesheet" href="common/common.css">\n' +
-      '\t<link rel="stylesheet" href="maze/style.css">\n' +
-      '\t<script src="maze/js/jszip.min.js"></script>\n' +
-      '\t<script src="common/boot.js"></script>\n' +
-      '\t<script src="common/storage.js"></script>\n' +
+    '\t<meta charset="utf-8">\n' +
+    '\t<meta name="google" value="notranslate">\n' +
+    '\t<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, user-scalable=no">\n' +
+    '\t<title>Blockly Games : Maze</title>\n' +
+    '\t<link rel="stylesheet" href="common/common.css">\n' +
+    '\t<link rel="stylesheet" href="maze/style.css">\n' +
+    '\t<script src="maze/js/jszip.min.js"></script>\n' +
+    '\t<script src="common/boot.js"></script>\n' +
+    '\t<script src="common/storage.js"></script>\n' +
     '</head>\n' +
     '<body>\n' +
-      '\t<p id="levelData" style="display: none">' + leveldata + '</p>\n' +
+    '\t<p id="levelData" style="display: none">' +
+    leveldata +
+    '</p>\n' +
     '</body>\n' +
-    '</html>';
+    '</html>'
 
-	zip.file( "maze.html", mazeHTML );
+  zip.file('maze.html', mazeHTML)
 
-  var folder = zip.folder( "maze" );
+  var folder = zip.folder('maze')
 
-	folder.file( "background.png", bgData.split('base64,')[ 1 ], { base64: true } );
+  folder.file('background.png', bgData.split('base64,')[1], { base64: true })
 
-	zip.generateAsync( { type: "blob" } ).then( function( content )
-	{
-	    saveAs( content, "customgame.zip" );
-	});
-  */
+  zip.generateAsync({ type: 'blob' }).then(function (content) {
+    saveAs(content, 'customgame.zip')
+  })
 }
 
 function loadBackgroundFile() {
