@@ -327,12 +327,16 @@ function getDataURL(imageObject) {
 }
 
 function clickSave() {
-  var zip = new JSZip()
+  /* var zip = new JSZip() */
 
   var leveldata = JSON.stringify(levels)
   var bgData = bgCanvas.toDataURL('image/png')
+  var name = document.getElementById('nameGame')
 
-  var mazeHTML =
+  console.log(bgData) /** Imagem de fundo */
+  console.log(name.value) /** Nome do jogo */
+
+  /* var mazeHTML =
     '<!DOCTYPE html>\n' +
     '<html>\n' +
     '<head>\n' +
@@ -361,7 +365,7 @@ function clickSave() {
 
   zip.generateAsync({ type: 'blob' }).then(function (content) {
     saveAs(content, 'customgame.zip')
-  })
+  })*/
 }
 
 function loadBackgroundFile() {
