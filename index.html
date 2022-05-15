@@ -25,7 +25,7 @@
 		<label for="nameGame">Nome do jogo: </label>
 		<input id="nameGame" type="text" placeholder="Digite o nome do jogo"/>
 		<label for="bgFile">Imagem de fundo: </label>
-		<input id="bgFile" type="file" onchange="loadBackgroundFile()"/>
+		<input id="bgFile" type="file" style="color:transparent;" onchange="this.style.color = 'black'; loadBackgroundFile();"/>
 		<br>
 		<input type="checkbox" name="grid" value="none" checked><label for="grid">Exibir grade</label>
 		<!-- <label for="tilesFile">Tiles: </label>
