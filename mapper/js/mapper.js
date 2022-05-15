@@ -335,6 +335,7 @@ function clickSave() {
 
   console.log(bgData) /** Imagem de fundo */
   console.log(name.value) /** Nome do jogo */
+  console.log(leveldata) /** Néveis do jogo */
 
   /* var mazeHTML =
     '<!DOCTYPE html>\n' +
