@@ -7,6 +7,7 @@ var bgCtx
 var bgWidth
 var bgHeight
 
+var fundo
 var bgImg
 var bgSrc = 'bg_ufsm.jpg'
 var tilesImg
@@ -326,52 +327,48 @@ function getDataURL(imageObject) {
   return temp.toDataURL('image/png')
 }
 
+async function makePost(url, body){
+  console.log("Body = ", body)
+
+  var request = new XMLHttpRequest()
+  request.open("POST", url, true)
+  request.setRequestHeader("Content-type", "application/json")
+  request.send(JSON.stringify(body))
+
+  console.log(JSON.stringify(body))
+
+  request.onload = function(){
+    console.log(this.responseText)
+  }
+
+  return request.responseText
+}
+
 function clickSave() {
-  /* var zip = new JSZip() */
+  event.preventDefault()
+  var url = "http://127.0.0.1:3333/api/mazes"
 
   var leveldata = JSON.stringify(levels)
   var bgData = bgCanvas.toDataURL('image/png')
-  var name = document.getElementById('nameGame')
+  var name = document.getElementById('nameGame').value
 
-  console.log(bgData) /** Imagem de fundo */
-  console.log(name.value) /** Nome do jogo */
+  console.log(fundo) /** Imagem de fundo */
+  console.log(name) /** Nome do jogo */
   console.log(leveldata) /** Néveis do jogo */
 
-  /* var mazeHTML =
-    '<!DOCTYPE html>\n' +
-    '<html>\n' +
-    '<head>\n' +
-    '\t<meta charset="utf-8">\n' +
-    '\t<meta name="google" value="notranslate">\n' +
-    '\t<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, user-scalable=no">\n' +
-    '\t<title>Blockly Games : Maze</title>\n' +
-    '\t<link rel="stylesheet" href="common/common.css">\n' +
-    '\t<link rel="stylesheet" href="maze/style.css">\n' +
-    '\t<script src="maze/js/jszip.min.js"></script>\n' +
-    '\t<script src="common/boot.js"></script>\n' +
-    '\t<script src="common/storage.js"></script>\n' +
-    '</head>\n' +
-    '<body>\n' +
-    '\t<p id="levelData" style="display: none">' +
-    leveldata +
-    '</p>\n' +
-    '</body>\n' +
-    '</html>'
-
-  zip.file('maze.html', mazeHTML)
-
-  var folder = zip.folder('maze')
-
-  folder.file('background.png', bgData.split('base64,')[1], { base64: true })
-
-  zip.generateAsync({ type: 'blob' }).then(function (content) {
-    saveAs(content, 'customgame.zip')
-  })*/
+  body = {
+    "name": name,
+    "image": fundo,
+    "levels": leveldata,
+  }
+  
+  makePost(url, body)
 }
 
 function loadBackgroundFile() {
   var file = document.getElementById('bgFile')
   bgSrc = URL.createObjectURL(file.files[0])
+  fundo = file.files[0]
 
   bgImg = new Image()
   bgImg.onload = function () {
