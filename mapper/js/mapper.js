@@ -608,14 +608,14 @@ function clickSave()
   data.append('image', image)
   data.append('levels', leveldata)
 
-  /*if (name && image && leveldata){
-    fetch('http://localhost:3333/api/mazes', {
+  if (name && image && leveldata){
+    fetch('https://maze-game-backend.herokuapp.com/api/mazes', {
     method: "POST",
     body: data
     })
     .then(response => response.json()) 
     .then(json => console.log(json));
-  }*/
+  }
 }
 
 function loadBackgroundFile()
