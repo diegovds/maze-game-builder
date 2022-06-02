@@ -70,7 +70,7 @@ body
   display: block;
   height: 10%;
   width: 100%;
-  background: gray;
+  background: #ADD8E6;
 }
 
 .page
@@ -102,7 +102,7 @@ body
   width: 20%;
   height: 90%;
   float: right;
-  background: lightgray;
+  background: rgb(173,208,230);
 }
 
 #toolbox label

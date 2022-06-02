@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="google" value="notranslate">
-  <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Maze Builder</title>
   <link rel="stylesheet" href="mapper/style.css">
   <script src="mapper/js/mapper.js"></script>
@@ -22,16 +22,12 @@
 	</div>
 	<div id="toolbox">
 		<div id="logWrapper" style="display: none;"><span id="log"></span></div>
+		<label for="nameMaze">Nome do jogo:</label>
+		<input id="nameMaze" type="text" placeholder="Digite o nome do jogo" required/>
 		<label for="bgFile">Imagem de fundo: </label>
-		<input id="bgFile" type="file" onchange="loadBackgroundFile()"/>
+		<input id="bgFile" type="file" style="color:transparent;" onchange="this.style.color = 'black'; loadBackgroundFile();"/>
 		<br>
 		<input type="checkbox" name="grid" value="none" checked><label for="grid">Exibir grade</label>
-		<!-- <label for="tilesFile">Tiles: </label>
-		<input id="tilesFile" type="file" onchange="loadTilesFile()"/>
-		<label for="pegmanFile">Pegman: </label>
-		<input id="pegmanFile" type="file" onchange="loadPegmanFile()"/>
-		<label for="markerFile">Marker: </label>
-		<input id="markerFile" type="file" onchange="loadMarkerFile()"/>-->
 		<hr/>
 		<span id="buttonDraw" class="page" onclick="clickDraw();"><a>Atualizar</a></span>
 	</div>
@@ -39,6 +35,4 @@
 	<img id="pegmanImg" src="mapper/resources/pegman.png" style="display: none;"></img>
 	<img id="markerImg" src="mapper/resources/marker.png" style="display: none;"></img>
 </body>
-<script src="mapper/js/FileSaver.min.js"></script>
-<script src="mapper/js/jszip.min.js"></script>
 </html>

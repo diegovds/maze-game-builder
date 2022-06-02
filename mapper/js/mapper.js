@@ -583,46 +583,46 @@ function getDataURL( imageObject )
 
 function clickSave()
 {
-	var zip = new JSZip();
+  var file = document.getElementById( "bgFile" );
+  var name = document.getElementById( "nameMaze" ).value /* nome do jogo */
+	var leveldata = JSON.stringify( levels ); /* níveis do jogo */
+  var image = file.files[0] /* imagem de fundo */
+	
+  if (!name){
+    alert("Digite o nome do jogo!")
+  }
+  if (!image){
+    alert("Escolha uma imagem!")
+  }
+  if (!leveldata){
+    alert("Crie pelo menos um nível no jogo")
+  }
 
-	var leveldata = JSON.stringify( levels );
-	var bgData = bgCanvas.toDataURL( "image/png" );
+  //console.log(name)
+  //console.log(image)
+  //console.log(leveldata)
 
-  var mazeHTML = '<!DOCTYPE html>\n' +
-    '<html>\n' +
-    '<head>\n' +
-      '\t<meta charset="utf-8">\n' +
-      '\t<meta name="google" value="notranslate">\n' +
-      '\t<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, user-scalable=no">\n' +
-      '\t<title>Blockly Games : Maze</title>\n' +
-      '\t<link rel="stylesheet" href="common/common.css">\n' +
-      '\t<link rel="stylesheet" href="maze/style.css">\n' +
-      '\t<script src="maze/js/jszip.min.js"></script>\n' +
-      '\t<script src="common/boot.js"></script>\n' +
-      '\t<script src="common/storage.js"></script>\n' +
-    '</head>\n' +
-    '<body>\n' +
-      '\t<p id="levelData" style="display: none">' + leveldata + '</p>\n' +
-    '</body>\n' +
-    '</html>';
+  const data = new FormData();
 
-	zip.file( "maze.html", mazeHTML );
+  data.append('name', name)
+  data.append('image', image)
+  data.append('levels', leveldata)
 
-  var folder = zip.folder( "maze" );
-
-	folder.file( "background.png", bgData.split('base64,')[ 1 ], { base64: true } );
-
-	zip.generateAsync( { type: "blob" } ).then( function( content )
-	{
-	    saveAs( content, "customgame.zip" );
-	});
+  /*if (name && image && leveldata){
+    fetch('http://localhost:3333/api/mazes', {
+    method: "POST",
+    body: data
+    })
+    .then(response => response.json()) 
+    .then(json => console.log(json));
+  }*/
 }
 
 function loadBackgroundFile()
 {
   var file = document.getElementById( "bgFile" );
   bgSrc = URL.createObjectURL( file.files[0] );
-
+  
   bgImg = new Image();
   bgImg.onload = function()
   {
