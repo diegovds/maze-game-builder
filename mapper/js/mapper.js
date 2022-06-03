@@ -583,6 +583,10 @@ function getDataURL( imageObject )
 
 async function clickSave()
 {
+  const urlSearchParams = new URLSearchParams(window.location.search)
+  const uId = urlSearchParams.get("uid")
+  console.log(uId)
+
   var file = document.getElementById( "bgFile" );
   var name = document.getElementById( "nameMaze" ).value /* nome do jogo */
 	var leveldata = JSON.stringify( levels ); /* níveis do jogo */
