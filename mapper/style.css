@@ -232,3 +232,8 @@ body
 {
   margin: 8px;
 }
+
+span:hover {
+  color: #1a8918;
+  transition: .4s;
+}
