@@ -581,40 +581,38 @@ function getDataURL( imageObject )
   return temp.toDataURL( "image/png" );
 }
 
-function clickSave()
+async function clickSave()
 {
   var file = document.getElementById( "bgFile" );
   var name = document.getElementById( "nameMaze" ).value /* nome do jogo */
 	var leveldata = JSON.stringify( levels ); /* níveis do jogo */
   var image = file.files[0] /* imagem de fundo */
-	
-  if (!name){
-    alert("Digite o nome do jogo!")
-  }
-  if (!image){
-    alert("Escolha uma imagem!")
-  }
-  if (!leveldata){
-    alert("Crie pelo menos um nível no jogo")
-  }
+  const data = new FormData();
 
   //console.log(name)
   //console.log(image)
   //console.log(leveldata)
 
-  const data = new FormData();
-
-  data.append('name', name)
-  data.append('image', image)
-  data.append('levels', leveldata)
-
   if (name && image && leveldata){
-    fetch('https://maze-game-backend.herokuapp.com/api/mazes', {
-    method: "POST",
-    body: data
+
+    data.append('name', name)
+    data.append('image', image)
+    data.append('levels', leveldata)
+
+    const response = await fetch('https://maze-game-backend.herokuapp.com/api/mazes', {
+      method: "POST",
+      body: data
     })
-    .then(response => response.json()) 
-    .then(json => console.log(json));
+    
+    if (response.status == 201) { 
+      alert("Jogo salvo com sucesso.")
+      window.location.assign('https://mazegamegenerator.vercel.app/dashboard')
+    } else {
+      alert("Ocorreu um erro ao salvar o jogo, tente novamete.")
+    }
+
+  } else{
+    alert("Confira se todos os campos foram preenchidos e se a imagem foi selecionada!")
   }
 }
 
