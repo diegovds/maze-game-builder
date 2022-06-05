@@ -584,8 +584,8 @@ function getDataURL( imageObject )
 async function clickSave()
 {
   const urlSearchParams = new URLSearchParams(window.location.search)
-  const uId = urlSearchParams.get("uid")
-  console.log(uId)
+  const userId = urlSearchParams.get("userId")
+  console.log(userId)
 
   var file = document.getElementById( "bgFile" );
   var name = document.getElementById( "nameMaze" ).value /* nome do jogo */
@@ -603,7 +603,8 @@ async function clickSave()
     data.append('image', image)
     data.append('levels', leveldata)
 
-    const response = await fetch('https://maze-game-backend.herokuapp.com/api/mazes', {
+    //const response = await fetch('http://localhost:3333/api/mazes', {
+    const response = await fetch('https://maze-game-backend.herokuapp.com/api/users/' + userId + '/mazes', {
       method: "POST",
       body: data
     })
