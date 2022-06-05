@@ -81,12 +81,14 @@ body
 .page
 {
   display: inline-block;
-  border: 1px solid black;
-  background: white;
+  border: none;
+  background-color: #1a8918;
   padding: 5px;
+  color: #fff;
   font-family: var(--font-name);
   margin: 8px 4px;
   cursor: pointer;
+  border-radius: 5px;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -98,8 +100,14 @@ body
 
 .selected
 {
-  color: white;
-  background: black;
+  color: #fff;
+  background: #363636;
+}
+
+.selected:hover
+{
+  color: #fff;
+  background: #000;
 }
 
 #toolbox
@@ -199,13 +207,15 @@ body
 #buttonSave
 {
   display: inline-block;
-  border: 1px solid black;
-  background: white;
+  background-color: #1a8918;
   padding: 5px;
+  border: none;
+  border-radius: 10px;
   font-family: var(--font-name);
   margin: 8px 4px;
   margin-right: 8px;
   cursor: pointer;
+  color: #fff;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -236,10 +246,24 @@ body
 #buttonDraw
 {
   margin: 8px;
+  background-color: #1a8918;
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+}
+
+#buttonDraw:hover {
+  background-color: #0f730c;
+  transition: .4s;
 }
 
 span:hover {
-  color: #1a8918;
+  background-color: #0f730c;
+  transition: .4s;
+}
+
+#buttonSave:hover {
+  background-color: #0f730c;
   transition: .4s;
 }
 
@@ -255,27 +279,24 @@ span:hover {
 
 .file-upload__button {
   -webkit-appearance: none;
-  background: white;
-  border: 1px solid black;
+  background: #1a8918;
   outline: none;
   width: 36%;
+  border: none;
   padding: 0.5em 0.8em;
   margin-right: 17px;
   margin-top: 10px;
   margin-bottom: 10px;
-  color: black;
+  color: #fff;
   font-size: 80%;
   font-family: "Fredoka One", sans-serif;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 .file-upload__button:hover {
-  color: #1a8918;
+  background-color: #0f730c;
   transition: .4s;
-}
-
-.file-upload__button:active {
-  background: grey;
 }
 
 .file-upload__label {
