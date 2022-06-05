@@ -242,3 +242,47 @@ span:hover {
   color: #1a8918;
   transition: .4s;
 }
+
+.file-upload {
+  display: inline-flex;
+  align-items: center;
+  padding-left: .5em;
+}
+
+.file-upload__input {
+  display: none;
+}
+
+.file-upload__button {
+  -webkit-appearance: none;
+  background: white;
+  border: 1px solid black;
+  outline: none;
+  width: 36%;
+  padding: 0.5em 0.8em;
+  margin-right: 17px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: black;
+  font-size: 80%;
+  font-family: "Fredoka One", sans-serif;
+  cursor: pointer;
+}
+
+.file-upload__button:hover {
+  color: #1a8918;
+  transition: .4s;
+}
+
+.file-upload__button:active {
+  background: grey;
+}
+
+.file-upload__label {
+  width: 49%;
+  font-size: 80%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: "Fredoka One", sans-serif;
+}

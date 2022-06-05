@@ -31,7 +31,11 @@
 		<label for="nameMaze">Nome do jogo:</label>
 		<input id="nameMaze" type="text" placeholder="Digite o nome do jogo" required/>
 		<label for="bgFile">Imagem de fundo: </label>
-		<input id="bgFile" type="file" style="color:transparent;" onchange="this.style.color = 'black'; loadBackgroundFile();"/>
+		<div class="file-upload">
+			<input class="file-upload__input" type="file" style="display: none;" name="myFile[]" id="bgFile">
+			<button class="file-upload__button" type="button">Selecione uma imagem</button>
+			<span class="file-upload__label"></span>
+		</div>
 		<br>
 		<input type="checkbox" name="grid" value="none" checked><label for="grid">Exibir grade</label>
 		<hr/>
@@ -40,5 +44,38 @@
 	<img id="tilesImg" src="mapper/resources/tiles.png" style="display: none;"></img>
 	<img id="pegmanImg" src="mapper/resources/pegman.png" style="display: none;"></img>
 	<img id="markerImg" src="mapper/resources/marker.png" style="display: none;"></img>
+
+	<script>
+		Array.prototype.forEach.call(
+			document.querySelectorAll(".file-upload__button"),
+			function(button) {
+				const hiddenInput = button.parentElement.querySelector(
+					".file-upload__input"
+				);
+				const label = button.parentElement.querySelector(".file-upload__label");
+				const defaultLabelText = "Imagem não selecionada";
+
+				// Set default text for label
+				label.textContent = defaultLabelText;
+				label.title = defaultLabelText;
+
+				button.addEventListener("click", function() {
+					hiddenInput.click();
+				});
+
+				hiddenInput.addEventListener("change", function() {
+					loadBackgroundFile();
+					const filenameList = Array.prototype.map.call(hiddenInput.files, function(
+						file
+					) {
+						return file.name;
+					});
+
+					label.textContent = filenameList.join(", ") || defaultLabelText;
+					label.title = label.textContent;
+				});
+			}
+		);
+	</script>
 </body>
 </html>
