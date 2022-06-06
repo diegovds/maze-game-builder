@@ -585,7 +585,7 @@ async function clickSave()
 {
   const urlSearchParams = new URLSearchParams(window.location.search)
   const userId = urlSearchParams.get("userId")
-  console.log(userId)
+  //console.log(userId)
 
   var file = document.getElementById( "bgFile" );
   var name = document.getElementById( "nameMaze" ).value /* nome do jogo */
