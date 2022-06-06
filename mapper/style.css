@@ -281,7 +281,7 @@ span:hover {
   -webkit-appearance: none;
   background: #1a8918;
   outline: none;
-  width: 36%;
+  width: 35%;
   border: none;
   padding: 0.5em 0.8em;
   margin-right: 17px;
@@ -292,6 +292,7 @@ span:hover {
   font-family: "Fredoka One", sans-serif;
   cursor: pointer;
   border-radius: 10px;
+  text-align: center;
 }
 
 .file-upload__button:hover {
@@ -300,7 +301,9 @@ span:hover {
 }
 
 .file-upload__label {
-  width: 49%;
+  position: absolute;
+  margin-left: 5.6rem;
+  max-width: 12%;
   font-size: 80%;
   text-overflow: ellipsis;
   overflow: hidden;
