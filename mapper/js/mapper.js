@@ -592,8 +592,19 @@ async function clickSave()
   var file = document.getElementById( "bgFile" );
   var name = document.getElementById( "nameMaze" ).value /* nome do jogo */
 	var leveldata = JSON.stringify( levels ); /* níveis do jogo */
+  image = file.files[0] /* imagem de fundo */
+
+  let canvas = document.createElement('canvas')
+  let ctx = canvas.getContext('2d')
+
+  canvas.width = bgWidth
+  canvas.height = bgHeight
+
+  ctx.drawImage(bgImg, 0, 0, bgWidth, bgHeight)
+  var dataurl = canvas.toDataURL();
+  image = dataURLToBlob(dataurl)
   image = new File([image], "name.png");
-  //image = file.files[0] /* imagem de fundo */
+
   const data = new FormData();
 
   //console.log(name)
