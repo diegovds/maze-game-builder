@@ -7,6 +7,8 @@ var bgCtx;
 var bgWidth;
 var bgHeight;
 
+var image;
+
 var bgImg;
 var bgSrc = 'bg_ufsm.jpg';
 var tilesImg;
@@ -590,7 +592,8 @@ async function clickSave()
   var file = document.getElementById( "bgFile" );
   var name = document.getElementById( "nameMaze" ).value /* nome do jogo */
 	var leveldata = JSON.stringify( levels ); /* níveis do jogo */
-  var image = file.files[0] /* imagem de fundo */
+  image = new File([image], "name.png");
+  //image = file.files[0] /* imagem de fundo */
   const data = new FormData();
 
   //console.log(name)
@@ -603,7 +606,7 @@ async function clickSave()
     data.append('image', image)
     data.append('levels', leveldata)
 
-    //const response = await fetch('http://localhost:3333/api/mazes', {
+    //const response = await fetch('http://localhost:3333/api/users/' + 3 + '/mazes', {
     const response = await fetch('https://maze-game-backend.herokuapp.com/api/users/' + userId + '/mazes', {
       method: "POST",
       body: data
@@ -611,7 +614,7 @@ async function clickSave()
     
     if (response.status == 201) { 
       alert("Jogo salvo com sucesso.")
-      window.location.assign('https://mazegamegenerator.vercel.app/dashboard')
+      //window.location.assign('https://mazegamegenerator.vercel.app/dashboard')
       //window.location.assign('https://mazegamegenerator.vercel.app')
     } else {
       alert("Ocorreu um erro ao salvar o jogo, tente novamete.")
@@ -674,14 +677,37 @@ function loadMarkerFile()
   markerImg.src = markerSrc;
 }
 
+function dataURLToBlob(dataURL) {
+  var BASE64_MARKER = ';base64,';
+  if (dataURL.indexOf(BASE64_MARKER) == -1) {
+      var parts = dataURL.split(',');
+      var contentType = parts[0].split(':')[1];
+      var raw = decodeURIComponent(parts[1]);
+      return new Blob([raw], {type: contentType});
+  }
+  var parts = dataURL.split(BASE64_MARKER);
+  var contentType = parts[0].split(':')[1];
+  var raw = window.atob(parts[1]);
+  var rawLength = raw.length;
+  var uInt8Array = new Uint8Array(rawLength);
+  for (var i = 0; i < rawLength; ++i) {
+      uInt8Array[i] = raw.charCodeAt(i);
+  }
+  return new Blob([uInt8Array], {type: contentType});
+}
+
 function drawBackground()
 {
-  bgHeight = bgImg.height;
-  bgWidth = bgImg.width;
+  bgHeight = 600;
+  bgWidth = 700;
 
   initBGCanvas();
 
   bgCtx.drawImage( bgImg, 0, 0, bgWidth, bgHeight );
+  var dataurl = bgCanvas.toDataURL();
+  //console.log(dataurl)
+  bgImg.src = dataurl;
+  image = dataURLToBlob(dataurl)
 }
 
 function drawTiles()
@@ -733,17 +759,7 @@ function clickDraw()
 {
   if( loadingStatus[ 0 ] )
   {
-    var height = bgImg.height;
-    var width = bgImg.width;
-
-    if( width < 150 || width > 700 || height < 150 || height > 700 )
-    {
-      alert( 'Imagem deve ter entre 150 e 700 pixels de altura/largura.' );
-    }
-    else
-    {
-      drawBackground();
-    }
+    drawBackground();
   }
   if( loadingStatus[ 0 ] && loadingStatus[ 1 ] && loadingStatus[ 2 ] && loadingStatus[ 3 ] )
   {
