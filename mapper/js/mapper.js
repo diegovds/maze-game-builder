@@ -709,7 +709,7 @@ function dataURLToBlob(dataURL) {
 
 function drawBackground()
 {
-  bgHeight = 600;
+  bgHeight = 500;
   bgWidth = 700;
 
   initBGCanvas();
