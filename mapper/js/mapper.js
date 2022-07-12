@@ -625,8 +625,8 @@ async function clickSave()
     
     if (response.status == 201) { 
       alert("Jogo salvo com sucesso.")
-      window.location.assign('https://mazegamegenerator.vercel.app/dashboard')
-      //window.location.assign('https://mazegamegenerator.vercel.app')
+      window.location.assign('https://myblocklymaze.vercel.app/dashboard')
+      //window.location.assign('https://myblocklymaze.vercel.app/')
     } else {
       alert("Ocorreu um erro ao salvar o jogo, tente novamete.")
     }
