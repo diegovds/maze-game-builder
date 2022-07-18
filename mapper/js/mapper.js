@@ -809,3 +809,15 @@ window.onclick = function(event) {
     switchModal()
   }
 }
+
+window.onclick = function(event) {
+  const checkbox = document.querySelector('input[name=grid]')
+  if (event.target.checked && event.target == checkbox) {
+    //console.log("Checkbox is checked..");
+    isGridActivated = true
+  }
+  if (!event.target.checked && event.target == checkbox) {
+    //console.log("Checkbox is not checked..");
+    isGridActivated = false
+  }
+}
