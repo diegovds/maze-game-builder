@@ -9,6 +9,8 @@ var bgHeight;
 
 var image;
 
+var test
+
 var bgImg;
 var bgSrc = 'bg_ufsm.jpg';
 var tilesImg;
@@ -534,13 +536,36 @@ function clickAddLevel()
 	refreshTextArea();
 }
 
+function setTest(){
+  test = true
+
+  const deleteModal = document.querySelector('.deleteModal')
+  deleteModal.style.display = 'none'
+
+  clickRemoveLevel()
+}
+
+function resetTest(){
+  test = false
+  
+  const deleteModal = document.querySelector('.deleteModal')
+  deleteModal.style.display = 'none'
+
+  clickRemoveLevel()
+}
+
+function switchDeleteModal(){
+  const deleteModal = document.querySelector('.deleteModal')
+  deleteModal.style.display = 'inline-block'
+}
+
 function clickRemoveLevel()
 {
   if( levels.length > 1 )
   {
-    var test = confirm( "Deseja excluir o último nível?" );
+    //var test = confirm( "Deseja excluir o último nível?" );
 
-    if( test )
+    if( test == true )
     {
       var toolbar = document.getElementById( "toolbar" );
 
@@ -565,6 +590,8 @@ function clickRemoveLevel()
   {
     alert( "Você não pode excluir o primeiro nível." );
   }
+
+  test = false
 }
 
 function getDataURL( imageObject )
