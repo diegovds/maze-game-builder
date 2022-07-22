@@ -560,6 +560,15 @@ function resetTest(){
   const message = document.querySelector(".message");
   message.style.display = 'none'
 
+  const fetchOk = document.querySelector(".fetchOk");
+  fetchOk.style.display = 'none'
+
+  const fetchError = document.querySelector(".fetchError");
+  fetchError.style.display = 'none'
+
+  const dataError = document.querySelector(".dataError");
+  dataError.style.display = 'none'
+
   clickRemoveLevel()
 }
 
@@ -635,6 +644,16 @@ function getDataURL( imageObject )
 
 async function clickSave()
 {
+  const deleteModal = document.querySelector('.deleteModal')
+  const positiveOption = document.querySelector('#positiveOption')
+  positiveOption.style.display = 'none'
+  const titleDeleteModal = document.querySelector('.titleDeleteModal')
+  titleDeleteModal.style.display = 'none'
+  
+  const fetchOk = document.querySelector(".fetchOk");
+  const fetchError = document.querySelector(".fetchError");
+  const dataError = document.querySelector(".dataError");
+
   const buttonSave = document.querySelector('#buttonSave')
   buttonSave.style.display = 'none'
   
@@ -687,17 +706,26 @@ async function clickSave()
       throw new Error("Ocorreu um erro ao salvar o jogo, tente novamete.");
     })
     .then((data) => {
-      alert("Jogo salvo com sucesso.")
+      deleteModal.style.display = 'inline-block'
+      fetchOk.style.display = 'flex'
+      
+      //alert("Jogo salvo com sucesso.")
       window.location.assign('https://myblocklymaze.vercel.app/dashboard')
       //window.location.assign('https://myblocklymaze.vercel.app/')
     })
     .catch((error) => {
-      alert(error.message)
+      deleteModal.style.display = 'inline-block'
+      fetchError.style.display = 'flex'
+
+      //alert(error.message)
       buttonSaveOff.style.display = 'none'
       buttonSave.style.display = 'inline-block'
     });
   } else{
-    alert("Confira se todos os campos foram preenchidos e se a imagem foi selecionada!")
+    deleteModal.style.display = 'inline-block'
+    dataError.style.display = 'flex'
+
+    //alert("Confira se todos os campos foram preenchidos e se a imagem foi selecionada!")
     buttonSaveOff.style.display = 'none'
     buttonSave.style.display = 'inline-block'
   }
