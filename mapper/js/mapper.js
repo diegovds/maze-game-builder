@@ -600,11 +600,13 @@ async function clickSave()
   canvas.width = bgWidth
   canvas.height = bgHeight
 
-  ctx.drawImage(bgImg, 0, 0, bgWidth, bgHeight)
-  var dataurl = canvas.toDataURL();
-  image = dataURLToBlob(dataurl)
-  image = new File([image], "name.png");
-
+  if(bgImg){
+    ctx.drawImage(bgImg, 0, 0, bgWidth, bgHeight)
+    var dataurl = canvas.toDataURL();
+    image = dataURLToBlob(dataurl)
+    image = new File([image], "name.png");
+  }
+  
   const data = new FormData();
 
   //console.log(name)
@@ -617,20 +619,25 @@ async function clickSave()
     data.append('image', image)
     data.append('levels', leveldata)
 
-    //const response = await fetch('http://localhost:3333/api/users/' + 3 + '/mazes', {
+    //const response = await fetch('http://localhost:3333/api/users/' + 9 + '/mazes', {
     const response = await fetch('https://maze-game-backend.herokuapp.com/api/users/' + userId + '/mazes', {
       method: "POST",
       body: data
     })
-    
-    if (response.status == 201) { 
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error("Ocorreu um erro ao salvar o jogo, tente novamete.");
+    })
+    .then((data) => {
       alert("Jogo salvo com sucesso.")
       window.location.assign('https://myblocklymaze.vercel.app/dashboard')
       //window.location.assign('https://myblocklymaze.vercel.app/')
-    } else {
-      alert("Ocorreu um erro ao salvar o jogo, tente novamete.")
-    }
-
+    })
+    .catch((error) => {
+      alert(error.message)
+    });
   } else{
     alert("Confira se todos os campos foram preenchidos e se a imagem foi selecionada!")
   }
