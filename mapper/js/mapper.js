@@ -812,7 +812,9 @@ const switchModal = () => {
 }
 
 const clickClose = () => {
-  switchModal()
+  //switchModal()
+  const modal = document.querySelector('.modal')
+  modal.style.display = 'none'
 }
 
 const btn = document.querySelector('.buttonModal')
@@ -834,6 +836,7 @@ window.onclick = function(event) {
   }
 
   if (event.target == modal) {
-    switchModal()
+    //switchModal()
+    modal.style.display = 'none'
   }
 }
