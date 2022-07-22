@@ -551,12 +551,35 @@ function resetTest(){
   const deleteModal = document.querySelector('.deleteModal')
   deleteModal.style.display = 'none'
 
+  const positiveOption = document.querySelector('#positiveOption')
+  positiveOption.style.display = 'flex'
+
+  const titleDeleteModal = document.querySelector('.titleDeleteModal')
+  titleDeleteModal.style.display = 'flex'
+
+  const message = document.querySelector(".message");
+  message.style.display = 'none'
+
   clickRemoveLevel()
 }
 
 function switchDeleteModal(){
-  const deleteModal = document.querySelector('.deleteModal')
-  deleteModal.style.display = 'inline-block'
+  if( levels.length > 1 ){
+    const deleteModal = document.querySelector('.deleteModal')
+    deleteModal.style.display = 'inline-block'
+  } else {
+    const deleteModal = document.querySelector('.deleteModal')
+    deleteModal.style.display = 'inline-block'
+
+    const positiveOption = document.querySelector('#positiveOption')
+    positiveOption.style.display = 'none'
+
+    const titleDeleteModal = document.querySelector('.titleDeleteModal')
+    titleDeleteModal.style.display = 'none'
+
+    const message = document.querySelector(".message");
+    message.style.display = 'flex'
+  }
 }
 
 function clickRemoveLevel()
@@ -588,7 +611,7 @@ function clickRemoveLevel()
   }
   else
   {
-    alert( "Você não pode excluir o primeiro nível." );
+    //alert( "Você não pode excluir o primeiro nível.");
   }
 
   test = false
