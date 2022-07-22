@@ -625,8 +625,8 @@ async function clickSave()
     data.append('image', image)
     data.append('levels', leveldata)
 
-    //const response = await fetch('http://localhost:3333/api/users/' + 9 + '/mazes', {
-    const response = await fetch('https://maze-game-backend.herokuapp.com/api/users/' + userId + '/mazes', {
+    //fetch('http://localhost:3333/api/users/' + 9 + '/mazes', {
+    fetch('https://maze-game-backend.herokuapp.com/api/users/' + userId + '/mazes', {
       method: "POST",
       body: data
     })
