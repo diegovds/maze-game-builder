@@ -96,12 +96,18 @@ body
   -ms-user-select: none;
   user-select: none;
   float: left;
+  transition: .4s;
+}
+
+.page:hover {
+  background-color: #0f730c;
 }
 
 .selected
 {
   color: #fff;
   background: #363636;
+  transition: .4s;
 }
 
 .selected:hover
@@ -247,6 +253,7 @@ body
   -ms-user-select: none;
   user-select: none;
   float: right;
+  transition: .4s;
 }
 
 .buttonModal
@@ -268,11 +275,11 @@ body
   -ms-user-select: none;
   user-select: none;
   float: right;
+  transition: .4s;
 }
 
 .buttonModal:hover {
   background-color: #0f730c;
-  transition: .4s;
 }
 
 #buttonDelete
@@ -291,6 +298,7 @@ body
   -ms-user-select: none;
   user-select: none;
   float: right;
+  transition: .4s;
 }
 
 #buttonDraw
@@ -300,21 +308,15 @@ body
   border: none;
   color: #fff;
   border-radius: 10px;
+  transition: .4s;
 }
 
 #buttonDraw:hover {
   background-color: #0f730c;
-  transition: .4s;
-}
-
-span:hover {
-  background-color: #0f730c;
-  transition: .4s;
 }
 
 #buttonSave:hover {
   background-color: #0f730c;
-  transition: .4s;
 }
 
 .file-upload {
@@ -343,11 +345,11 @@ span:hover {
   cursor: pointer;
   border-radius: 10px;
   text-align: center;
+  transition: .4s;
 }
 
 .file-upload__button:hover {
   background-color: #0f730c;
-  transition: .4s;
 }
 
 .file-upload__label {
@@ -388,7 +390,6 @@ span:hover {
 
 .modal .content .buttonClose
 {
-  display: inline-block;
   background-color: #1a8918;
   padding: 5px;
   border: none;
@@ -404,12 +405,11 @@ span:hover {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  float: right;
+  transition: .4s;
 }
 
 .modal .content .buttonClose:hover {
   background-color: #0f730c;
-  transition: .4s;
 }
 
 .modal .content ol {
@@ -418,4 +418,56 @@ span:hover {
 
 .modal .content ul {
   list-style:disc;
+}
+
+#optionButtons{
+  display: flex;
+  flex-direction: row;
+  transition: .4s;
+}
+
+#positiveOption {
+  background-color: #FF0000;
+  padding: 5px;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-name);
+  margin: 8px 4px;
+  margin-right: 8px;
+  cursor: pointer;
+  color: #fff;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: .4s;
+}
+
+#positiveOption:hover {
+  background-color: rgb(225,0,0);
+}
+
+#negativeOption {
+  background-color: #1a8918;
+  padding: 5px;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-name);
+  margin: 8px 4px;
+  margin-right: 8px;
+  cursor: pointer;
+  color: #fff;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: .4s;
+}
+
+#negativeOption:hover {
+  background-color: #0f730c;
 }
