@@ -585,6 +585,12 @@ function getDataURL( imageObject )
 
 async function clickSave()
 {
+  const buttonSave = document.querySelector('#buttonSave')
+  buttonSave.style.display = 'none'
+  
+  const buttonSaveOff = document.querySelector('#buttonSaveOff')
+  buttonSaveOff.style.display = 'inline-block'
+
   const urlSearchParams = new URLSearchParams(window.location.search)
   const userId = urlSearchParams.get("userId")
   //console.log(userId)
@@ -637,9 +643,13 @@ async function clickSave()
     })
     .catch((error) => {
       alert(error.message)
+      buttonSaveOff.style.display = 'none'
+      buttonSave.style.display = 'inline-block'
     });
   } else{
     alert("Confira se todos os campos foram preenchidos e se a imagem foi selecionada!")
+    buttonSaveOff.style.display = 'none'
+    buttonSave.style.display = 'inline-block'
   }
 }
 
