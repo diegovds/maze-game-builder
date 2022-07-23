@@ -709,8 +709,9 @@ async function clickSave()
       deleteModal.style.display = 'inline-block'
       fetchOk.style.display = 'flex'
       
+      window.location.assign('https://myblocklymaze.vercel.app/mazes/' + data.data.id)
       //alert("Jogo salvo com sucesso.")
-      window.location.assign('https://myblocklymaze.vercel.app/dashboard')
+      //window.location.assign('https://myblocklymaze.vercel.app/dashboard')
       //window.location.assign('https://myblocklymaze.vercel.app/')
     })
     .catch((error) => {
