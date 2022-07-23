@@ -664,6 +664,11 @@ async function clickSave()
   const userId = urlSearchParams.get("userId")
   //console.log(userId)
 
+  var way = 0
+  var start = 0
+  var end = 0
+  var item
+
   var file = document.getElementById( "bgFile" );
   var name = document.getElementById( "nameMaze" ).value /* nome do jogo */
 	var leveldata = JSON.stringify( levels ); /* níveis do jogo */
@@ -688,7 +693,25 @@ async function clickSave()
   //console.log(image)
   //console.log(leveldata)
 
-  if (name && image && leveldata){
+  for (var level in levels) {
+    //console.log("Nível " + level)
+    for (var info in levels[level]){
+      for (var value in levels[level][info]){
+        item = levels[level][info][value]
+        if(item == 1){
+          way++
+        }
+        if(item == 2){
+          start++
+        }
+        if(item == 3){
+          end++
+        }
+      }
+    }
+  }
+
+  if (name && image && leveldata && way > 0 && start > 0 && end > 0){
 
     data.append('name', name)
     data.append('image', image)
