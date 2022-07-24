@@ -524,7 +524,10 @@ async function clickSave()
       deleteModal.style.display = 'inline-block'
       fetchOk.style.display = 'flex'
       
-      window.location.assign('https://myblocklymaze.vercel.app/mazes/' + data.data.id)
+      setTimeout(() => {
+        window.location.assign('https://myblocklymaze.vercel.app/mazes/' + data.data.id)
+      }, 2000) // aguarda 2 segundos para chamar window.location.assign()
+
       //alert("Jogo salvo com sucesso.")
       //window.location.assign('https://myblocklymaze.vercel.app/dashboard')
       //window.location.assign('https://myblocklymaze.vercel.app/')
@@ -719,6 +722,7 @@ if(btn){
 window.onclick = function(event) {
   const modal = document.querySelector('.modal')
   const checkbox = document.querySelector('input[name=grid]')
+  const deleteModal = document.querySelector('.deleteModal')
 
   if (event.target.checked && event.target == checkbox) {
     //console.log("Checkbox is checked..");
@@ -732,5 +736,10 @@ window.onclick = function(event) {
   if (event.target == modal) {
     //switchModal()
     modal.style.display = 'none'
+  }
+
+  if (event.target == deleteModal) {
+    deleteModal.style.display = 'none'
+    resetTest()
   }
 }
