@@ -453,6 +453,7 @@ async function clickSave()
   var start = 0
   var end = 0
   var item
+  var levelsError = false
 
   var file = document.getElementById( "bgFile" );
   var name = document.getElementById( "nameMaze" ).value /* nome do jogo */
@@ -480,6 +481,9 @@ async function clickSave()
 
   for (var level in levels) {
     //console.log("Nível " + level)
+    way = 0
+    start = 0
+    end = 0
     for (var info in levels[level]){
       for (var value in levels[level][info]){
         item = levels[level][info][value]
@@ -494,9 +498,12 @@ async function clickSave()
         }
       }
     }
+    if(start != 1 || end != 1 || way < 1){
+      levelsError = true
+    }
   }
 
-  if (name && image && leveldata && way > 0 && start > 0 && end > 0){
+  if (name && image && leveldata && levelsError == false){
 
     data.append('name', name)
     data.append('image', image)
