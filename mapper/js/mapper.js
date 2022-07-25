@@ -354,7 +354,7 @@ function resetTest(){
   const dataError = document.querySelector(".dataError");
   dataError.style.display = 'none'
 
-  const levelError = document.querySelector(".levelError");
+  const levelError = document.querySelector("#levelError");
   levelError.style.display = 'none'
 
   clickRemoveLevel()
@@ -441,7 +441,7 @@ async function clickSave()
   const fetchOk = document.querySelector(".fetchOk");
   const fetchError = document.querySelector(".fetchError");
   const dataError = document.querySelector(".dataError");
-  const levelError = document.querySelector(".levelError");
+  const levelError = document.querySelector("#levelError");
 
   const buttonSave = document.querySelector('#buttonSave')
   buttonSave.style.display = 'none'
@@ -504,6 +504,10 @@ async function clickSave()
     }
     if(start != 1 || end != 1 || way < 1){
       levelsError = true
+
+      const element = document.getElementById("levelError");
+      //element.innerHTML = parseInt(level) + 1;
+      element.innerHTML = "Confira se o nível " + (parseInt(level) + 1) + " possui um ponto de partida, um ponto de chegada e algum caminho!"
 
       deleteModal.style.display = 'inline-block'
       levelError.style.display = 'flex'
