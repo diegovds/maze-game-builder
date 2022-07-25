@@ -354,6 +354,9 @@ function resetTest(){
   const dataError = document.querySelector(".dataError");
   dataError.style.display = 'none'
 
+  const levelError = document.querySelector(".levelError");
+  levelError.style.display = 'none'
+
   clickRemoveLevel()
 }
 
@@ -438,6 +441,7 @@ async function clickSave()
   const fetchOk = document.querySelector(".fetchOk");
   const fetchError = document.querySelector(".fetchError");
   const dataError = document.querySelector(".dataError");
+  const levelError = document.querySelector(".levelError");
 
   const buttonSave = document.querySelector('#buttonSave')
   buttonSave.style.display = 'none'
@@ -500,53 +504,61 @@ async function clickSave()
     }
     if(start != 1 || end != 1 || way < 1){
       levelsError = true
+
+      deleteModal.style.display = 'inline-block'
+      levelError.style.display = 'flex'
+
+      buttonSaveOff.style.display = 'none'
+      buttonSave.style.display = 'inline-block'
     }
   }
 
-  if (name && image && leveldata && levelsError == false){
+  if( levelsError == false ){
+    if (name && image && leveldata){
 
-    data.append('name', name)
-    data.append('image', image)
-    data.append('levels', leveldata)
+      data.append('name', name)
+      data.append('image', image)
+      data.append('levels', leveldata)
 
-    //fetch('http://localhost:3333/api/users/' + 9 + '/mazes', {
-    fetch('https://maze-game-backend.herokuapp.com/api/users/' + userId + '/mazes', {
-      method: "POST",
-      body: data
-    })
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      throw new Error("Ocorreu um erro ao salvar o jogo, tente novamete.");
-    })
-    .then((data) => {
+      //fetch('http://localhost:3333/api/users/' + 9 + '/mazes', {
+      fetch('https://maze-game-backend.herokuapp.com/api/users/' + userId + '/mazes', {
+        method: "POST",
+        body: data
+      })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Ocorreu um erro ao salvar o jogo, tente novamete.");
+      })
+      .then((data) => {
+        deleteModal.style.display = 'inline-block'
+        fetchOk.style.display = 'flex'
+        
+        setTimeout(() => {
+          window.location.assign('https://myblocklymaze.vercel.app/mazes/' + data.data.id)
+        }, 2000) // aguarda 2 segundos para chamar window.location.assign()
+
+        //alert("Jogo salvo com sucesso.")
+        //window.location.assign('https://myblocklymaze.vercel.app/dashboard')
+        //window.location.assign('https://myblocklymaze.vercel.app/')
+      })
+      .catch((error) => {
+        deleteModal.style.display = 'inline-block'
+        fetchError.style.display = 'flex'
+
+        //alert(error.message)
+        buttonSaveOff.style.display = 'none'
+        buttonSave.style.display = 'inline-block'
+      });
+    } else{
       deleteModal.style.display = 'inline-block'
-      fetchOk.style.display = 'flex'
-      
-      setTimeout(() => {
-        window.location.assign('https://myblocklymaze.vercel.app/mazes/' + data.data.id)
-      }, 2000) // aguarda 2 segundos para chamar window.location.assign()
+      dataError.style.display = 'flex'
 
-      //alert("Jogo salvo com sucesso.")
-      //window.location.assign('https://myblocklymaze.vercel.app/dashboard')
-      //window.location.assign('https://myblocklymaze.vercel.app/')
-    })
-    .catch((error) => {
-      deleteModal.style.display = 'inline-block'
-      fetchError.style.display = 'flex'
-
-      //alert(error.message)
+      //alert("Confira se todos os campos foram preenchidos e se a imagem foi selecionada!")
       buttonSaveOff.style.display = 'none'
       buttonSave.style.display = 'inline-block'
-    });
-  } else{
-    deleteModal.style.display = 'inline-block'
-    dataError.style.display = 'flex'
-
-    //alert("Confira se todos os campos foram preenchidos e se a imagem foi selecionada!")
-    buttonSaveOff.style.display = 'none'
-    buttonSave.style.display = 'inline-block'
+    }
   }
 }
 
