@@ -568,7 +568,32 @@ async function clickSave()
 
 function loadBackgroundFile()
 {
+  const deleteModal = document.querySelector('.deleteModal')
+  const levelError = document.querySelector("#levelError");
+
+  const positiveOption = document.querySelector('#positiveOption')
+  positiveOption.style.display = 'none'
+  const titleDeleteModal = document.querySelector('.titleDeleteModal')
+  titleDeleteModal.style.display = 'none'
+
   var file = document.getElementById( "bgFile" );
+
+  var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.bmp|\.webp|\.svg)$/i;
+
+  if (!allowedExtensions.exec(file.value)) {
+    //alert('Invalid file type');
+
+    const element = document.getElementById("levelError");
+    //element.innerHTML = parseInt(level) + 1;
+    element.innerHTML = "Arquivo de imagem com formato inválido!<br><br>Formatos aceitos: .jpg, .jpeg, .png, .gif, .bmp, .webp, .svg"
+
+    deleteModal.style.display = 'inline-block'
+    levelError.style.display = 'flex'
+
+    file.value = '';
+    return false;
+  }
+
   bgSrc = URL.createObjectURL( file.files[0] );
   
   bgImg = new Image();
