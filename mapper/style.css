@@ -518,6 +518,7 @@ body
   padding: 10px;
   border-radius: 20px;
   width: 60%;
+  max-height: 10rem;
   box-shadow: 0 0 20px #3d3d3d;
 
   display: flex;
