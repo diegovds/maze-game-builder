@@ -572,9 +572,7 @@ function loadBackgroundFile()
   const levelError = document.querySelector("#levelError");
 
   const positiveOption = document.querySelector('#positiveOption')
-  positiveOption.style.display = 'none'
   const titleDeleteModal = document.querySelector('.titleDeleteModal')
-  titleDeleteModal.style.display = 'none'
 
   var file = document.getElementById( "bgFile" );
 
@@ -584,6 +582,9 @@ function loadBackgroundFile()
     //alert('Invalid file type');
 
     const element = document.getElementById("levelError");
+    positiveOption.style.display = 'none'
+    titleDeleteModal.style.display = 'none'
+    
     //element.innerHTML = parseInt(level) + 1;
     element.innerHTML = "Arquivo de imagem com formato inválido!<br><br>Formatos aceitos: .jpg, .jpeg, .png, .gif, .bmp, .webp, .svg"
 
