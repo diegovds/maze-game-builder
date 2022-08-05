@@ -181,6 +181,15 @@ function areImagesLoaded()
 
 function loadPage()
 {
+  const urlSearchParams = new URLSearchParams(window.location.search)
+  const userId = urlSearchParams.get("userId")
+  const errorPage = document.querySelector('.errorPage')
+
+  if(userId === null){
+    //console.log(userId)
+    errorPage.style.display = 'flex'
+  }
+
   tilesImg = document.getElementById( "tilesImg" );
 	pegmanImg = document.getElementById( "pegmanImg" );
   markerImg = document.getElementById( "markerImg" );
