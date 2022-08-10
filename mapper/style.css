@@ -448,10 +448,16 @@ body
   align-items: center;
 }
 
+.deleteModal .content h2{
+  margin-top: .8rem;
+  margin-bottom: .8rem;
+}
+
 #optionButtons{
   display: flex;
   flex-direction: row;
   transition: .4s;
+  margin-bottom: .8rem;
 }
 
 #positiveOption {
@@ -460,8 +466,7 @@ body
   border: none;
   border-radius: 10px;
   font-family: var(--font-name);
-  margin: 8px 4px;
-  margin-right: 8px;
+  margin-right: 25px;
   cursor: pointer;
   color: #fff;
   -webkit-touch-callout: none;
@@ -483,8 +488,6 @@ body
   border: none;
   border-radius: 10px;
   font-family: var(--font-name);
-  margin: 8px 4px;
-  margin-right: 8px;
   cursor: pointer;
   color: #fff;
   -webkit-touch-callout: none;
