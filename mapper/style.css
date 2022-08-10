@@ -500,25 +500,27 @@ body
 }
 
 .errorPage {
+  background-color: #eceeed;
   display: none;
   position: fixed;
   z-index: 999;
-  left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: #eceeed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
 }
 
 .errorPage .userIdError {
   font-family: 'Fredoka', cursive;
   background-color: #fff;
-  margin: 14rem auto;
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border-radius: 20px;
   width: 60%;
-  max-height: 10rem;
   box-shadow: 0 0 20px #3d3d3d;
 
   display: flex;
@@ -529,14 +531,15 @@ body
 }
 
 .errorPage .userIdError p {
-  padding-top: 2rem;
-  padding-bottom: 2.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .errorPage .userIdError a {
   text-decoration: none;
   background-color: #1a8918;
   padding: 0.4em 0.6em;
+  margin-bottom: 1rem;
   border-radius: 10px;
   transition: .4s;
   color: #fff;
