@@ -365,26 +365,29 @@ body
 
 .modal {
   /*display: none;*/
+  background-color: rgba(0,0,0,0.5);
   position: fixed;
   z-index: 99;
-  left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.5);
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal .content{
   font-family: 'Fredoka', cursive;
   background-color: #fff;
-  margin: 5.8rem auto;
   padding: 10px;
   border-radius: 20px;
   width: 60%;
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -421,30 +424,28 @@ body
 }
 
 .deleteModal {
+  background-color: rgba(0,0,0,0.5);
   display: none;
   position: fixed;
-  z-index: 99;
-  left: 0;
+  z-index: 999;
   top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.5);
+  bottom: 0;
+  right: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
 }
 
 .deleteModal .content{
   font-family: 'Fredoka', cursive;
   background-color: #fff;
-  margin: 14rem auto;
-  padding: 10px;
   border-radius: 20px;
   width: 60%;
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  align-content: center;
-  text-align: center;
 }
 
 #optionButtons{

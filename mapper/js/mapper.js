@@ -372,10 +372,10 @@ function resetTest(){
 function switchDeleteModal(){
   if( levels.length > 1 ){
     const deleteModal = document.querySelector('.deleteModal')
-    deleteModal.style.display = 'inline-block'
+    deleteModal.style.display = 'flex'
   } else {
     const deleteModal = document.querySelector('.deleteModal')
-    deleteModal.style.display = 'inline-block'
+    deleteModal.style.display = 'flex'
 
     const positiveOption = document.querySelector('#positiveOption')
     positiveOption.style.display = 'none'
@@ -518,7 +518,7 @@ async function clickSave()
       //element.innerHTML = parseInt(level) + 1;
       element.innerHTML = "Confira se o nível " + (parseInt(level) + 1) + " possui um ponto de partida, um ponto de chegada e algum caminho!"
 
-      deleteModal.style.display = 'inline-block'
+      deleteModal.style.display = 'flex'
       levelError.style.display = 'flex'
 
       buttonSaveOff.style.display = 'none'
@@ -545,7 +545,7 @@ async function clickSave()
         throw new Error("Ocorreu um erro ao salvar o jogo, tente novamete.");
       })
       .then((data) => {
-        deleteModal.style.display = 'inline-block'
+        deleteModal.style.display = 'flex'
         fetchOk.style.display = 'flex'
         
         setTimeout(() => {
@@ -557,7 +557,7 @@ async function clickSave()
         //window.location.assign('https://myblocklymaze.vercel.app/')
       })
       .catch((error) => {
-        deleteModal.style.display = 'inline-block'
+        deleteModal.style.display = 'flex'
         fetchError.style.display = 'flex'
 
         //alert(error.message)
@@ -565,7 +565,7 @@ async function clickSave()
         buttonSave.style.display = 'inline-block'
       });
     } else{
-      deleteModal.style.display = 'inline-block'
+      deleteModal.style.display = 'flex'
       dataError.style.display = 'flex'
 
       //alert("Confira se todos os campos foram preenchidos e se a imagem foi selecionada!")
@@ -597,7 +597,7 @@ function loadBackgroundFile()
     //element.innerHTML = parseInt(level) + 1;
     element.innerHTML = "Arquivo de imagem com formato inválido!<br><br>Formatos aceitos: .jpg, .jpeg, .png, .gif, .bmp, .webp, .svg"
 
-    deleteModal.style.display = 'inline-block'
+    deleteModal.style.display = 'flex'
     levelError.style.display = 'flex'
 
     file.value = '';
@@ -755,7 +755,7 @@ const switchModal = () => {
     modal.style.display = 'none'
   }
   else {
-    modal.style.display = 'block'
+    modal.style.display = 'flex'
   }
 }
 
