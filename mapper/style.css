@@ -515,19 +515,14 @@ body
 .errorPage .userIdError {
   font-family: 'Fredoka', cursive;
   background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   border-radius: 20px;
   width: 60%;
   box-shadow: 0 0 20px #3d3d3d;
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  align-content: center;
-  text-align: center;
 }
 
 .errorPage .userIdError p {
