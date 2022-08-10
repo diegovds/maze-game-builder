@@ -276,58 +276,75 @@ function clickChangeTile( event )
 function clickAddLevel()
 {
 	var toolbar = document.getElementById( "toolbar" );
+  const deleteModal = document.querySelector('.deleteModal')
+  const levelError = document.querySelector("#levelError");
 
-	var matrix = [];
-	var row = [];
-	for ( var i = 0; i < levelWidth; i++ )
-	{
-	    row.push( 0 );
-	}
-	for ( var j = 0; j < levelHeight; j++ )
-  {
-      matrix.push( row.concat() );
+  const positiveOption = document.querySelector('#positiveOption')
+  const titleDeleteModal = document.querySelector('.titleDeleteModal')
+
+	if(toolbar.childNodes.length <= 20){
+    var matrix = [];
+    var row = [];
+    for ( var i = 0; i < levelWidth; i++ )
+    {
+        row.push( 0 );
+    }
+    for ( var j = 0; j < levelHeight; j++ )
+    {
+        matrix.push( row.concat() );
+    }
+  
+    levels.push( matrix );
+    var span = document.createElement( "SPAN" );
+    var node = document.createElement( "A" );
+    var textnode = document.createTextNode( levels.length );
+    node.appendChild( textnode );
+    span.appendChild( node );
+    toolbar.insertBefore( span, document.getElementById( "addLevel" ) );
+    span.setAttribute( "class", "page" );
+    span.onclick = function()
+    {
+        var pages = toolbar.childNodes;
+  
+        for( var p = 0; p < pages.length; p++ )
+        {
+          if( pages[ p ].className == "page selected" )
+          {
+            pages[ p ].classList.remove( "selected" );
+          }
+        }
+        currentLevel = parseInt( this.firstChild.innerHTML, 10 );
+        this.classList.add( "selected" );
+  
+        refreshMainCanvas();
+        refreshTextArea();
+    };
+  
+    currentLevel = levels.length;
+  
+    var pages = toolbar.childNodes;
+    for( var p = 0; p < pages.length; p++ )
+    {
+      if( pages[ p ].className == "page selected" )
+      {
+        pages[ p ].classList.remove( "selected" );
+      }
+    }
+  
+    span.classList.add( "selected" );
+    refreshMainCanvas();
+    refreshTextArea();
+  } else {
+    const element = document.getElementById("levelError");
+    positiveOption.style.display = 'none'
+    titleDeleteModal.style.display = 'none'
+    
+    element.innerHTML = "Limite de níveis atingido."
+
+    deleteModal.style.display = 'flex'
+    levelError.style.display = 'flex'
   }
 
-  levels.push( matrix );
-	var span = document.createElement( "SPAN" );
-	var node = document.createElement( "A" );
-	var textnode = document.createTextNode( levels.length );
-	node.appendChild( textnode );
-	span.appendChild( node );
-	toolbar.insertBefore( span, document.getElementById( "addLevel" ) );
-	span.setAttribute( "class", "page" );
-	span.onclick = function()
-	{
-    	var pages = toolbar.childNodes;
-
-    	for( var p = 0; p < pages.length; p++ )
-    	{
-    		if( pages[ p ].className == "page selected" )
-    		{
-    			pages[ p ].classList.remove( "selected" );
-    		}
-    	}
-    	currentLevel = parseInt( this.firstChild.innerHTML, 10 );
-    	this.classList.add( "selected" );
-
-    	refreshMainCanvas();
-    	refreshTextArea();
-	};
-
-	currentLevel = levels.length;
-
-	var pages = toolbar.childNodes;
-	for( var p = 0; p < pages.length; p++ )
-	{
-		if( pages[ p ].className == "page selected" )
-		{
-			pages[ p ].classList.remove( "selected" );
-		}
-	}
-
-	span.classList.add( "selected" );
-	refreshMainCanvas();
-	refreshTextArea();
 }
 
 function setTest(){
