@@ -18,52 +18,9 @@
 <body onload="loadPage();">
 	<div id="toolbar">
 		<span id="addLevel" class="page" onclick="clickAddLevel();"><a>+</a></span>
-		<div class="deleteModal">
-			<div class="content">
-				<h2 class="titleDeleteModal">Deseja excluir o último nível?</h2>
-				<h2 class="message" style="display: none;">Você não pode excluir o primeiro nível.</h2>
-				<h2 class="fetchOk" style="display: none;">Desafio salvo com sucesso.</h2>
-				<h2 class="fetchError" style="display: none;">Ocorreu um erro ao salvar o desafio, tente novamete.</h2>
-				<h2 class="dataError" style="display: none;">Confira se todos os campos foram preenchidos e se a imagem foi selecionada!</h2>
-				<h2 id="levelError" style="display: none;">Confira se os níveis possuem um ponto de partida, um ponto de chegada e no mínimo um caminho!</h2>
-				<br>
-				<div id="optionButtons">
-					<span id="positiveOption" onclick="setTest();"><a>Excluir</a></span>
-					<span id="negativeOption" onclick="resetTest();"><a>Fechar</a></span>
-				</div>
-			</div>
-		</div>
 		<span id="removeLevel" class="page" onclick="switchDeleteModal();"><a>-</a></span>
 		<span id="buttonSave" onclick="clickSave();"><a>Salvar</a></span>
 		<span id="buttonSaveOff" style="display: none;"><a style="cursor: default;">Aguarde...</a></span>
-		<div class="modal">
-			<div class="content">
-				<h2>Instruções para criar um jogo:</h2>
-				<br>
-				<ol>
-					<!-- <li>Inicialmente selecione uma imagem e indique se deseja ou não exibir a grade de auxilio.<br>Após isso clique no botão "Atualizar".</li> -->
-					<li>Inicialmente selecione uma imagem. Após selecionar clique no botão "Atualizar".</li>
-					<br>
-					<li>A imagem selecionada fica posicionada no lado esquerdo da página e para elaborar os<br>caminhos dos níveis do jogo é utilizada a seguinte lógica com o botão esquerdo<br>do mouse:</li>
-					<br>
-						<ul>
-							<li>Um clique - Área com caminho</li>
-							<li>Dois cliques - Ponto de partida</li>
-							<li>Três cliques - Ponto de chegada</li>
-						</ul>
-					<br>
-					<p>É possível adicionar e remover níveis clicando nos botões "+" e "-" no lado superior esquerdo.</p>
-					<br>
-					<li>Digite um nome para o seu jogo.</li>
-					<br>
-					<li>Por fim, o jogo pode ser salvo ao clicar no botão "Salvar".</li>
-					<br>
-				</ol>
-				<p>Você pode rever as instruções clicando no botão "Ajuda" no lado superior direito.</p>
-				<br>
-				<span class="buttonClose" onclick="clickClose();"><a>Fechar</a></span>
-			</div>
-		</div>
 		<span class="buttonModal" onclick="switchModal()"><a>Ajuda</a></span>
 	</div>
 	<div id="view">
@@ -86,6 +43,49 @@
 		<input type="checkbox" name="grid" value="none" checked style="display: none;"><label for="grid" style="display: none;">Exibir grade</label>
 		<hr/>
 		<span id="buttonDraw" class="page" onclick="clickDraw();"><a>Atualizar</a></span>
+	</div>
+	<div class="modal">
+		<div class="content">
+			<h2>Instruções para criar um jogo:</h2>
+			<br>
+			<ol>
+				<!-- <li>Inicialmente selecione uma imagem e indique se deseja ou não exibir a grade de auxilio.<br>Após isso clique no botão "Atualizar".</li> -->
+				<li>Inicialmente selecione uma imagem. Após selecionar clique no botão "Atualizar".</li>
+				<br>
+				<li>A imagem selecionada fica posicionada no lado esquerdo da página e para elaborar os<br>caminhos dos níveis do jogo é utilizada a seguinte lógica com o botão esquerdo<br>do mouse:</li>
+				<br>
+					<ul>
+						<li>Um clique - Área com caminho</li>
+						<li>Dois cliques - Ponto de partida</li>
+						<li>Três cliques - Ponto de chegada</li>
+					</ul>
+				<br>
+				<p>É possível adicionar e remover níveis clicando nos botões "+" e "-" no lado superior esquerdo.</p>
+				<br>
+				<li>Digite um nome para o seu jogo.</li>
+				<br>
+				<li>Por fim, o jogo pode ser salvo ao clicar no botão "Salvar".</li>
+				<br>
+			</ol>
+			<p>Você pode rever as instruções clicando no botão "Ajuda" no lado superior direito.</p>
+			<br>
+			<span class="buttonClose" onclick="clickClose();"><a>Fechar</a></span>
+		</div>
+	</div>
+	<div class="deleteModal">
+		<div class="content">
+			<h2 class="titleDeleteModal">Deseja excluir o último nível?</h2>
+			<h2 class="message" style="display: none;">Você não pode excluir o primeiro nível.</h2>
+			<h2 class="fetchOk" style="display: none;">Desafio salvo com sucesso.</h2>
+			<h2 class="fetchError" style="display: none;">Ocorreu um erro ao salvar o desafio, tente novamete.</h2>
+			<h2 class="dataError" style="display: none;">Confira se todos os campos foram preenchidos e se a imagem foi selecionada!</h2>
+			<h2 id="levelError" style="display: none;">Confira se os níveis possuem um ponto de partida, um ponto de chegada e no mínimo um caminho!</h2>
+			<br>
+			<div id="optionButtons">
+				<span id="positiveOption" onclick="setTest();"><a>Excluir</a></span>
+				<span id="negativeOption" onclick="resetTest();"><a>Fechar</a></span>
+			</div>
+		</div>
 	</div>
 	<div class="errorPage" style="display: none;">
 		<div class="userIdError">
