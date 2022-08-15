@@ -453,6 +453,13 @@ body
   margin-bottom: .8rem;
 }
 
+#levelError span{
+  /*font-weight: bold;*/
+  color: #F00;
+  margin-left: .3rem;
+  margin-right: .3rem;
+}
+
 #optionButtons{
   display: flex;
   flex-direction: row;

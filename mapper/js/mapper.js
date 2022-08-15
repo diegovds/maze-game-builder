@@ -533,7 +533,7 @@ async function clickSave()
 
       const element = document.getElementById("levelError");
       //element.innerHTML = parseInt(level) + 1;
-      element.innerHTML = "Confira se o nível " + (parseInt(level) + 1) + " possui um ponto de partida, um ponto de chegada e algum caminho!"
+      element.innerHTML = "Confira se o <span>nível " + (parseInt(level) + 1) + "</span> possui um ponto de partida, um ponto de chegada e algum caminho!"
 
       deleteModal.style.display = 'flex'
       levelError.style.display = 'flex'
