@@ -566,6 +566,8 @@ async function clickSave()
         fetchOk.style.display = 'flex'
         
         setTimeout(() => {
+          window.parent.postMessage('mensagem vinda do iframe', '*')
+
           window.location.assign('https://myblocklymaze.vercel.app/mazes/' + data.data.id)
         }, 2000) // aguarda 2 segundos para chamar window.location.assign()
 
