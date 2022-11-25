@@ -500,7 +500,7 @@ async function clickSave()
     ctx.drawImage(bgImg, 0, 0, bgWidth, bgHeight)
     var dataurl = canvas.toDataURL();
     image = dataURLToBlob(dataurl)
-    image = new File([image], "name.png");
+    image = new File([image], file.files[0].name);
   }
   
   const data = new FormData();
@@ -550,7 +550,7 @@ async function clickSave()
       data.append('image', image)
       data.append('levels', leveldata)
 
-      //fetch('http://localhost:3333/api/users/' + 9 + '/mazes', {
+      //fetch('http://localhost:3000/api/mazes/1', {
       //fetch('https://maze-game-backend.herokuapp.com/api/users/' + userId + '/mazes', {
       fetch('https://new-api-blockly-next-prisma-postgresql.vercel.app/api/mazes/' + userId, {
         method: "POST",
