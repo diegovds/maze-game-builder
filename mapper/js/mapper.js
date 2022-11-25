@@ -551,7 +551,8 @@ async function clickSave()
       data.append('levels', leveldata)
 
       //fetch('http://localhost:3333/api/users/' + 9 + '/mazes', {
-      fetch('https://maze-game-backend.herokuapp.com/api/users/' + userId + '/mazes', {
+      //fetch('https://maze-game-backend.herokuapp.com/api/users/' + userId + '/mazes', {
+      fetch('https://new-api-blockly-next-prisma-postgresql.vercel.app/api/mazes/' + userId, {
         method: "POST",
         body: data
       })
