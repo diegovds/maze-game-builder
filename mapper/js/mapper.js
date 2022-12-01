@@ -550,7 +550,7 @@ async function clickSave()
       data.append('image', image)
       data.append('levels', leveldata)
 
-      //fetch('http://localhost:3000/api/mazes/1', {
+      //fetch('http://localhost:3333/api/mazes/1', {
       //fetch('https://maze-game-backend.herokuapp.com/api/users/' + userId + '/mazes', {
       fetch('https://new-api-blockly-next-prisma-postgresql.vercel.app/api/mazes/' + userId, {
         method: "POST",
@@ -563,6 +563,9 @@ async function clickSave()
         throw new Error("Ocorreu um erro ao salvar o jogo, tente novamete.");
       })
       .then((data) => {
+        if(data.error){
+          throw new Error("Ocorreu um erro ao salvar o jogo, tente novamete.");
+        }
         deleteModal.style.display = 'flex'
         fetchOk.style.display = 'flex'
         
