@@ -550,40 +550,29 @@ async function clickSave()
       data.append('image', image)
       data.append('levels', leveldata)
 
-      //fetch('http://localhost:3333/api/mazes/1', {
-      //fetch('https://maze-game-backend.herokuapp.com/api/users/' + userId + '/mazes', {
-      fetch('https://new-api-blockly-next-prisma-postgresql.vercel.app/api/mazes/' + userId, {
-        method: "POST",
-        body: data
-      })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error("Ocorreu um erro ao salvar o jogo, tente novamete.");
-      })
-      .then((data) => {
-        deleteModal.style.display = 'flex'
-        fetchOk.style.display = 'flex'
-        
-        setTimeout(() => {
-          window.parent.postMessage('mensagem, mazeId=' + data.data.id, '*')
+      axios
+        //.post("http://localhost:3333/api/mazes/1", data)
+        .post('https://new-api-blockly-next-prisma-postgresql.vercel.app/api/mazes/' + userId, data)
+        .then((response) => {
+          response = response.data.data;
 
-          //window.location.assign('https://myblocklymaze.vercel.app/mazes/' + data.data.id)
-        }, 2000) // aguarda 2 segundos para chamar window.location.assign()
+          deleteModal.style.display = "flex";
+          fetchOk.style.display = "flex";
 
-        //alert("Jogo salvo com sucesso.")
-        //window.location.assign('https://myblocklymaze.vercel.app/dashboard')
-        //window.location.assign('https://myblocklymaze.vercel.app/')
-      })
-      .catch((e) => {
-        deleteModal.style.display = 'flex'
-        fetchError.style.display = 'flex'
+          setTimeout(() => {
+            window.parent.postMessage("mensagem, mazeId=" + response.id, "*");
 
-        console.error(e)
-        buttonSaveOff.style.display = 'none'
-        buttonSave.style.display = 'inline-block'
-      });
+            //window.location.assign('https://myblocklymaze.vercel.app/mazes/' + data.data.id)
+          }, 2000); // aguarda 2 segundos para chamar window.location.assign()
+        })
+        .catch((e) => {
+          deleteModal.style.display = "flex";
+          fetchError.style.display = "flex";
+
+          console.error(e);
+          buttonSaveOff.style.display = "none";
+          buttonSave.style.display = "inline-block";
+        });
     } else{
       deleteModal.style.display = 'flex'
       dataError.style.display = 'flex'
