@@ -579,11 +579,11 @@ async function clickSave()
         //window.location.assign('https://myblocklymaze.vercel.app/dashboard')
         //window.location.assign('https://myblocklymaze.vercel.app/')
       })
-      .catch((error) => {
+      .catch((e) => {
         deleteModal.style.display = 'flex'
         fetchError.style.display = 'flex'
 
-        //alert(error.message)
+        console.error(e)
         buttonSaveOff.style.display = 'none'
         buttonSave.style.display = 'inline-block'
       });
