@@ -563,9 +563,6 @@ async function clickSave()
         throw new Error("Ocorreu um erro ao salvar o jogo, tente novamete.");
       })
       .then((data) => {
-        if(data.error){
-          throw new Error("Ocorreu um erro ao salvar o jogo, tente novamete.");
-        }
         deleteModal.style.display = 'flex'
         fetchOk.style.display = 'flex'
         
