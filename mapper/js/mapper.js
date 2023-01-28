@@ -551,7 +551,7 @@ async function clickSave()
       data.append('levels', leveldata)
 
       axios
-        //.post("http://localhost:3333/api/mazes/1", data)
+        //.post("http://localhost:3333/api/mazes/" + userId, data)
         .post('https://new-api-blockly-next-prisma-postgresql.vercel.app/api/mazes/' + userId, data)
         .then((response) => {
           response = response.data.data;
